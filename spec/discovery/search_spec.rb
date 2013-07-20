@@ -1,5 +1,4 @@
-$: << './lib'
-require 'discovery'
+require 'spec_helper'
 
 module Discovery
   describe Seeker do
