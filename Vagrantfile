@@ -1,13 +1,9 @@
-raise 'Please define PDMCODE environment variable pointing to a directory containing the pdm repository. Make sure it is the real thing (not a symlink).' unless ENV['PDMCODE']
-
 raise 'Please upgrade to Vagrant >= 1.2' unless Gem::Version.new(Vagrant::VERSION) >= Gem::Version.new('1.2')
+raise 'Please indicate me where your pdm code is by setting PDMCODE environment variable' unless ENV['PDMCODE']
 
 Vagrant.configure('2') do |config|
-  # Download and add box with:
-  # cd /tmp
-  # curl -O https://s3.amazonaws.com/alvarobp-public/vagrant-boxes/debian-rbenv-7.1.0.box
-  # vagrant box add debian-rbenv-7.1.0 debian-rbenv-7.1.0.box
   config.vm.box = "debian-rbenv-7.1.0"
+  config.vm.box_url = 'https://s3.amazonaws.com/alvarobp-public/vagrant-boxes/debian-rbenv-7.1.0.box'
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", 1024]
     # vb.gui = true
