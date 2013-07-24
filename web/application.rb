@@ -20,7 +20,7 @@ module Web
     end
 
     get '/' do
-      haml :index
+      haml :home, :layout => 'layouts/application'.to_sym
     end
   end
 end
